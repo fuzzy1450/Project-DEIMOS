@@ -1,5 +1,5 @@
-**_DE_**IMOS:
+**DE**IMOS:
 
-**_I_**nstant
+**I**nstant
 
-**_Mo_**n**_s_**ter
+**Mo**n**s**ter
