@@ -9,6 +9,11 @@
 </head>
 <body>
 	<h1> Welcome to Project Deimos </h1>
- <a href="login"><button>Login</button></a>
+	<br><br><br>
+	
+	<a href="login"><button>Login</button></a>
+	<br>
+	<br>
+	<a href="login/register.php"><button>Sign Up</button></a>
 </body>
 </html>
