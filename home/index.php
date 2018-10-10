@@ -26,7 +26,7 @@ if (mysqli_connect_errno()) {
 </head>
 
 <body class="background">
-<div id="campaignContainer" class = "foreground centered-hori">
+<div class = "mainContainer foreground centered-hori">
 	<div id="campaignList">
 		<?php
 		 # Get the list of campaigns that the user has access to

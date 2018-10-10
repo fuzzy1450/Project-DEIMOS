@@ -19,17 +19,18 @@
 	margin: auto;
 	display: block;
 }
+.mainContainer {
+	width: 750px;
+	background-color: var(--foreground-color);
+	text-align: center;
+	color: var(--main-txt-color);
+	height: 100%;
+}
+
 
 
 
 /* specifc ids, meant to fine tune specific elements */
-#introPageBody {
-	background-color: var(--foreground-color);
-	text-align: center;
-	color: var(--main-txt-color);
-}
 
-#campaignContainer {
-	width: 750px;
-}
+
 
