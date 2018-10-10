@@ -6,7 +6,6 @@ include("../php/genericPHPVariables.php");
 	
 $conn = new mysqli($sqlServer, $sqlUsername, $sqlPassword, $dbname);
 if (mysqli_connect_errno()) {
-	$errors = "Connection failed: " . $conn->connect_error;
 	$result = false;
 	$errors = 'Failed to connect to login database';
 	die(json_encode(array("success"=>$result, "message"=>$errors)));
