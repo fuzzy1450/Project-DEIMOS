@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title> Project Deimos</title>
+	<title>Project Deimos</title>
 	<link rel="stylesheet" type="text/css" href="index.css"/>
 </head>
 <body>
