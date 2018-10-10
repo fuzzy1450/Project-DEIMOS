@@ -1,0 +1,35 @@
+:root{ /* css variables to customize the site's apperance */
+	--background-color: #161616;
+	--foreground-color: #383838;
+	--main-txt-color: white;
+}
+
+
+
+/* Standard classes, meant for general use */
+.background {	/* For background containers */
+	background-color: var(--background-color);
+}
+
+.foreground{	/* For foreground containers */
+	background-color: var(--foreground-color);
+}
+
+.centered-hori{ /* For elements that are horizontally centered */
+	margin: auto;
+	display: block;
+}
+
+
+
+/* specifc ids, meant to fine tune specific elements */
+#introPageBody {
+	background-color: var(--foreground-color);
+	text-align: center;
+	color: var(--main-txt-color);
+}
+
+#campaignContainer {
+	width: 750px;
+}
+

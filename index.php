@@ -1,13 +1,10 @@
-<?php
-
-?>
-
 <html>
 <head>
 	<title>Project Deimos</title>
-	<link rel="stylesheet" type="text/css" href="index.css"/>
+	<link rel="stylesheet" type="text/css" href="theme/theme.css"/>
 </head>
-<body>
+<body id="introPageBody">
+
 	<h1> Welcome to Project Deimos </h1>
 	<br><br><br>
 	
