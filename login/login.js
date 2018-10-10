@@ -12,10 +12,11 @@ $(document).ready(function() {
 				if(success == false){
 					error = data['message'];
 					console.log("oh no");
+					//TODO tell the user that login has failed
 				}
 				if(success == true) {
 					console.log("oh yea");
-					window.location.href="./submitNew.php"
+					window.location.href="../home"
 				}
 			}
 
