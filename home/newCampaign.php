@@ -23,6 +23,7 @@ if (mysqli_connect_errno()) {
 <head>
 	<title>Project Deimos</title>
 	<link rel="stylesheet" type="text/css" href="../theme/theme.css"/>
+	<script src="../js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body class="background">
@@ -34,9 +35,10 @@ if (mysqli_connect_errno()) {
 				<p>Description: <input type="text" name="Description"></p>
 				<p class="subtext">(both of these can be changed at any time)</p>
 				<p>What Game will you be using for this campaign?: <select>
+				<option value = "default"/>
 				<?php
 					#Get list of games currently supported by the system
-					$Games = getGameList();
+					$Games = getGameNameIDs();
 					
 					foreach($Games as $game){
 						echo "<option value = " . $game[0] . ">" . $game[1] . "</option>";
@@ -44,12 +46,12 @@ if (mysqli_connect_errno()) {
 				?>
 				</select>
 				
-				
+				<br><br><br>
 				
 				<input type="button" value="Create Campaign">
 			</form>
 		
-		
+		<script src="newCampaign.js"></script>
 	</div>
 </body>
 
