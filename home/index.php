@@ -30,12 +30,12 @@ if (mysqli_connect_errno()) {
 	<div id="campaignList">
 		<?php
 		 # Get the list of campaigns that the user has access to
-		 $CampaignIDs = getCampaignsList();
+		 $CampaignIDs = getCampaignsList($_SESSION['loginID']);
 		 foreach($CampaignIDs as $CampaignID){
 			 $CampaignDetails = getCampaignDetails($CampaignID);
 			 
-			 echo "<a href ='../campaign?id=".$CampaignDetails["ID"]."'><div class = 'campaignOption'>";
-			 echo "<h2 class = 'campaignName'>" . $CampaignDetails["gameName"] . "</h2>";
+			 echo "<a href ='../campaign?id=".$CampaignDetails["ID"]."'><div class = 'campaignOption centered-hori'>";
+			 echo "<h2 class = 'campaignName'>" . $CampaignDetails["campaignName"] . "</h2>";
 			 echo "<p class = 'campaignDescription'>" . $CampaignDetails["Description"] . "</p>";
 			 echo "</div></a>";
 		 }
@@ -44,6 +44,8 @@ if (mysqli_connect_errno()) {
 		?>
 
 	</div>
+	
+	<br><br><br>
 	<a href="NewCampaign.php"><button>Start a New Campaign</button></a>
 </div>
 
