@@ -43,12 +43,13 @@ if($QueryResult->num_rows === 0) {
 	die( json_encode(array("success"=>$result, "message"=>$errors)));
 		
 } else {// user found, password correct.
-	$resultArray = $QueryResult->fetch_array(MYSQLI_ASSOC);
+	$_SESSION['login'] = $_POST["UserName"];
+	$_SESSION['loginID'] = $QueryResult->fetch_array()["ID"];
+	$_SESSION['LoginExpire'] = (time() + ($LoginDays*(60*60*24)) + ($LoginHours*(60*60)) + ($LoginMinutes*(60)) + ($LoginSeconds));
+	
 	$result = true;
 	$errors = 'Login Successful';
 	echo json_encode(array("success"=>$result, "message"=>$errors));
-	$_SESSION['login'] = $_POST["UserName"];
-	$_SESSION['LoginExpire'] = (time() + ($LoginDays*(60*60*24)) + ($LoginHours*(60*60)) + ($LoginMinutes*(60)) + ($LoginSeconds));
 }
 
 

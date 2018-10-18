@@ -3,6 +3,7 @@ session_start();
 
 include "../php/loginTimeCheck.php";
 
+
 if(isset($_SESSION["login"])){ #if the user is already logged in, send them to the home page
 	header('Location: ../home');
 }
