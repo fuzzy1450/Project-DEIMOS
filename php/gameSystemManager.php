@@ -16,9 +16,9 @@ if (mysqli_connect_errno()) {
 
 /**
  * Gets a list of games that are currently supported by the system
- * @return mixed[] array of arrays that represent game data
+ * @return mixed[] array of arrays that represent game data. Game data is in the form [ID, GameName]
  */
-function getGameList(){
+function getGameNameIDs(){
 	include "mySQLVariables.php";
 	$conn = new mysqli($sqlServer, $sqlUsername, $sqlPassword, $dbname);
 	if (mysqli_connect_errno()) {
@@ -27,7 +27,7 @@ function getGameList(){
 		die(json_encode(array("success"=>$result, "message"=>$errors)));
 	}
 
-	$stmt = $conn->prepare("SELECT * FROM `gamesystems` WHERE 1");
+	$stmt = $conn->prepare("SELECT `ID`, `GameName` FROM `gamesystems` WHERE 1");
 	$stmt->execute();
 	$QueryResult = $stmt->get_result();
 	

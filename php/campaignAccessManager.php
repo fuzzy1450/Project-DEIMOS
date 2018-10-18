@@ -15,10 +15,12 @@ if (mysqli_connect_errno()) {
 }
 
 /**
- * Gets a list of Campaign IDs that are avaliable to the logged in user
+ * Gets a list of Campaign IDs that are avaliable to a specified user
+ * @param int $id the ID of the user who's campaign list you want to be returned
  * @return int[] list of Campaign IDs
+ *
  */
-function getCampaignsList(){
+function getCampaignsList($id){
 	include "mySQLVariables.php";
 	$conn = new mysqli($sqlServer, $sqlUsername, $sqlPassword, $dbname);
 	if (mysqli_connect_errno()) {
@@ -27,8 +29,8 @@ function getCampaignsList(){
 		die(json_encode(array("success"=>$result, "message"=>$errors)));
 	}
 
-	$stmt = $conn->prepare("SELECT `AccessedCampaigns` FROM `users` WHERE username=?");
-	$stmt->bind_param("s", $_SESSION["login"]);
+	$stmt = $conn->prepare("SELECT `AccessedCampaigns` FROM `users` WHERE ID=?");
+	$stmt->bind_param("i", $id);
 	$stmt->execute();
 	$QueryResult = $stmt->get_result();
 	
@@ -40,8 +42,8 @@ function getCampaignsList(){
  * @param int $id the id of the campaign you want to check
  * @return bool true or false, depending if the user has access to it
  */
-function hasCampaignAccess($id){
-	return in_array($id, getCampaignsList());
+function hasCampaignAccess($CampaignID, $UserID){
+	return in_array($CampaignID, getCampaignsList($UserID));
 }
 
 /*
@@ -50,7 +52,7 @@ function hasCampaignAccess($id){
  * @return mixed[] array of details about the campaign
  */
 function getCampaignDetails($id){
-	if(!hasCampaignAccess($id)){
+	if(!hasCampaignAccess($id, $_SESSION["loginID"])){
 		return [false, "You do not have access to this campaign"];
 	}
 	
@@ -63,7 +65,7 @@ function getCampaignDetails($id){
 	}
 
 	$stmt = $conn->prepare("SELECT * FROM `campaigns` WHERE ID=?");
-	$stmt->bind_param("s", $_SESSION["login"]);
+	$stmt->bind_param("i", $id);
 	$stmt->execute();
 	return $stmt->get_result()->fetch_array();
 }
