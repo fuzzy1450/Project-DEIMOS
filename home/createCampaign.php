@@ -35,9 +35,18 @@ $stmt->execute();
 $QueryResult = $stmt->get_result();
 
 if($stmt->affected_rows == 1){
-	$result = true;
-	$errors = 'Campaign created successfully';
-	die( json_encode(array("success"=>$result, "message"=>$errors)));
+	$GrantAccessAttempt = grantCampaignAccess($_SESSION['loginID'], $stmt->insert_id);
+	if($GrantAccessAttempt[0]){
+		$result = true;
+		$errors = 'Campaign created successfully';
+		die( json_encode(array("success"=>$result, "message"=>$errors)));
+	} else {
+		$result = false;
+		$errors = $GrantAccessAttempt[1];
+		die( json_encode(array("success"=>$result, "message"=>$errors)));
+	}
+	
+	
 	
 } else {
 	$result = false;
